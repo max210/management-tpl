@@ -1,10 +1,8 @@
 import { lazy } from 'react'
 import { UserOutlined } from '@ant-design/icons'
 
-const Layout = lazy(() => import('@/components/layout'))
 const Home = lazy(() => import('@/pages/home'))
-const Mine = lazy(() => import('@/pages/mine'))
-const Test = lazy(() => import('@/pages/test'))
+const UserManagement = lazy(() => import('@/pages/user/userManagement'))
 
 export default [
   {
@@ -22,18 +20,9 @@ export default [
       {
         path: '/management',
         name: '用户管理',
-        component: Mine,
+        component: UserManagement,
         exact: true,
-        icon: UserOutlined,
-        children: [
-          {
-            path: '/test',
-            name: 'test',
-            component: Test,
-            exact: true,
-            icon: UserOutlined
-          }
-        ]
+        icon: UserOutlined
       }
     ]
   }

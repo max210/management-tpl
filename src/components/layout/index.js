@@ -1,11 +1,11 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, useHistory } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
-import { UserOutlined } from '@ant-design/icons'
 import routes from '@/router'
 import { BASE_PATH } from '@/utils/config'
+import Head from '@/components/head'
 
-const { Header, Content, Footer, Sider } = Layout
+const { Header, Content, Sider } = Layout
 const siderStyle = {
   overflow: 'auto',
   height: '100vh',
@@ -13,7 +13,11 @@ const siderStyle = {
   left: 0
 }
 const headerStyle = { padding: 0 }
-const contentStyle = { margin: '24px 16px 0', overflow: 'initial' }
+const contentStyle = {
+  height: 'calc(100vh - 64px)',
+  margin: '24px 16px 0',
+  overflow: 'scroll'
+}
 const logoStyle = { height: '32px', margin: '16px' }
 
 const handleRoutes = (routes, basePath = '') => {
@@ -42,6 +46,7 @@ const handleRoutes = (routes, basePath = '') => {
     }
     routeArray.push(routeInfo, ...childrenRouteInfoArr)
     menuArray.push(menuInfo)
+    return null
   })
 
   return {
@@ -66,8 +71,10 @@ const getMenuComponent = menus => {
 }
 
 function LayoutPage() {
+  const history = useHistory()
+
   const menuClick = e => {
-    console.log('e', e)
+    history.push(e.key)
   }
 
   return (
@@ -79,7 +86,9 @@ function LayoutPage() {
         </Menu>
       </Sider>
       <Layout className='site-layout' style={{ marginLeft: 200 }}>
-        <Header className='site-layout-background' style={headerStyle} />
+        <Header className='site-layout-background' style={headerStyle}>
+          <Head />
+        </Header>
         <Content style={contentStyle}>
           {routeArray.map(({ path, component, exact }) => (
             <Route path={path} component={component} exact={exact} key={path} />
