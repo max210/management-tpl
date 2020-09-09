@@ -3,6 +3,7 @@ import { HashRouter, Route, Redirect, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import ErrorBoundary from '@/components/errorBoundary'
 import Layout from '@/components/layout'
+import Loading from '@/components/loading'
 import Login from '@/pages/login'
 import NotFound from '@/pages/notFound'
 import store from '@/store'
@@ -15,7 +16,7 @@ function App() {
     <Provider store={store}>
       <HashRouter>
         <ErrorBoundary>
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<Loading />}>
             <Switch>
               <Route path={BASE_PATH} component={Layout} />
               <Route path='/login' component={Login} exact />

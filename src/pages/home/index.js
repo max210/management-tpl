@@ -1,5 +1,4 @@
 import React from 'react'
-import { BankTwoTone } from '@ant-design/icons'
 
 const containerStyle = {
   width: '100%',
@@ -13,8 +12,7 @@ const containerStyle = {
 function Home() {
   return (
     <div style={containerStyle}>
-      <BankTwoTone style={{ fontSize: '80px' }} />
-      <p style={{ fontSize: '20px' }}>欢迎来到管理后台系统</p>
+      <p style={{ fontSize: '20px' }}>欢迎来到管理后台系统~~~~~</p>
     </div>
   )
 }
