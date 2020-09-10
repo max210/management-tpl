@@ -5,7 +5,7 @@ import style from './index.module.less'
 function NotFound() {
   return (
     <div className={style.container}>
-      <img src={img} className={style.img} />
+      <img src={img} className={style.img} alt='404' />
     </div>
   )
 }
