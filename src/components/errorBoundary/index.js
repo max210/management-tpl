@@ -17,7 +17,9 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      return <p style={{ textAlign: 'center', fontSize: '20px', marginTop: '50px'}}>页面好像出错了~</p>
+      return (
+        <p style={{ textAlign: 'center', fontSize: '20px', marginTop: '50px' }}>页面好像出错了~</p>
+      )
     }
     return this.props.children
   }

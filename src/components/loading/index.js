@@ -12,9 +12,7 @@ function Loading() {
         alignItems: 'center'
       }}
     >
-      <LoadingOutlined
-        style={{ fontSize: '60px', marginTop: '100px', color: '#40a9ff' }}
-      />
+      <LoadingOutlined style={{ fontSize: '60px', marginTop: '100px', color: '#40a9ff' }} />
     </div>
   )
 }

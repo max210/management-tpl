@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, useHistory } from 'react-router-dom'
+import { Route, Switch, useHistory, Redirect } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import routes from '@/router'
 import { BASE_PATH } from '@/utils/config'
@@ -27,10 +27,10 @@ const handleRoutes = (routes, basePath = '') => {
     let childrenRouteInfoArr = []
     let childrenMenuInfoArr = []
     if (children.length) {
-      ;({
-        routeArray: childrenRouteInfoArr,
-        menuArray: childrenMenuInfoArr
-      } = handleRoutes(children, `${basePath}${path}`))
+      ;({ routeArray: childrenRouteInfoArr, menuArray: childrenMenuInfoArr } = handleRoutes(
+        children,
+        `${basePath}${path}`
+      ))
     }
     const routeInfo = {
       path: `${basePath}${path}`,
@@ -90,9 +90,12 @@ function LayoutPage() {
           <Head />
         </Header>
         <Content style={contentStyle}>
-          {routeArray.map(({ path, component, exact }) => (
-            <Route path={path} component={component} exact={exact} key={path} />
-          ))}
+          <Switch>
+            {routeArray.map(({ path, component, exact }) => (
+              <Route path={path} component={component} exact={exact} key={path} />
+            ))}
+            <Redirect to='/404' />
+          </Switch>
         </Content>
       </Layout>
     </Layout>
